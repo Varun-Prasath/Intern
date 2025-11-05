@@ -2,27 +2,61 @@
 <html>
     <head>
     <title>Grocery List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #415A77;
+            color:#0D1B2A;
+        }
+        h1 {
+            color: #E0E1DD;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .available {
+            background-color: #778DA9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .priority {
+            background-color: #E0E1DD;
+            padding: 10px;
+            border-radius: 5px;
+            color: #0D1B2A;
+        }
+
+    </style>
     </head>
     <body>
         <h1 style="text-align: center;">Grocery list</h1>
-        <h3>List of Available Items</h3>
-        <ul>
-            <li>Apples</li>
-            <li>Bananas</li>
-            <li>Oranges</li>
-            <li>Carrots</li>
-            <li>Tomatoes</li>
-            <li>Potatoes</li>
-            <li>Onions</li>
-            <li>Spinach</li>
-        </ul>
-        <h3>Priority List</h3>
-        <ol>
-            <li>Carrots</li>
-            <li>Tomatoes</li>
-            <li>Onions</li>
-            <li>Apples</li>
-            <li>Potatoes</li>
-        </ol>
+        <div class="available">
+            <h3>List of Available Items</h3>
+            <ul>
+                <li>Apples</li>
+                <li>Bananas</li>
+                <li>Oranges</li>
+                <li>Carrots</li>
+                <li>Tomatoes</li>
+                <li>Potatoes</li>
+                <li>Onions</li>
+                <li>Spinach</li>
+            </ul>
+        </div>
+        <div class="priority">
+            <h3>Priority List</h3>
+            <ol>
+                <li>Carrots</li>
+                <li>Tomatoes</li>
+                <li>Onions</li>
+                <li>Apples</li>
+                <li>Potatoes</li>
+            </ol>
+        </div>
     </body>
 </html>

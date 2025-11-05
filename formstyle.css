@@ -1,0 +1,10 @@
+body{
+    background-color: burlywood;
+    color:darkmagenta;
+    text-align: center;
+}
+input, select, textarea{
+    padding: 5px;
+}
+
+
