@@ -3,32 +3,31 @@
 <head>
     <title>Simple Navbar</title>
     <style>
-        .nav{
-            background-color: skyblue;
-            display: flex;
-            padding: 10px;
-            width: 100%;
-            justify-content: center;
-            
-        }
         ul{
             list-style-type: none;
+            margin: 0;
+            padding: 0;
             display: flex;
+            padding: 20px;
+            background-color: lightseagreen;
         }
-        .nav a{
+        li{
+            margin-right: 20px;
+        }
+        a{
             text-decoration: none;
-            padding: 30px;
-            display: block;
+            padding: 8px 16px;
+            color: black;
+        }
+        a.active{
+            font-weight: bold;
+            color: darkblue;
+            background-color: lightgray;
+        }
+        a:hover{
+            background-color: gray;
             color: white;
         }
-        .nav a:hover{
-            color: firebrick;
-            background-color: gold;
-        }
-        .nav a.active{
-            background-color: goldenrod;
-        }
-
     </style>
 </head>
 <body>
