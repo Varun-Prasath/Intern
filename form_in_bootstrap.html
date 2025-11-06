@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Data Sheet</title>
+</head>
+<body>
+    <form action="">
+        <div class="container-fluid bg-light m-3">
+            <h1>Personal Data Sheet</h1>
+            <p class="text-muted">Enter details on the form below</p>
+            <hr>
+        </div>
+
+        <div class="container-fluid justify-content-center bg-light row m-3">
+            <label for="name" class="form-label">Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control">
+                <p class="text-muted">First Name</p>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control">
+                <p class="text-muted">Last Name</p>
+            </div>
+            <div class="col-sm-6 mt-3">
+                <label for="phone" class="form-label">Mobile Number</label>
+                <input type="tel" class="form-control" placeholder="(000) 000-0000">
+            </div>
+            <div class="col-sm-6 mt-3">
+                <label for="mail" class="form-label">E-Mail</label>
+                <input type="email" class="form-control" placeholder="ex: myname@example.com">
+            </div>
+            <div class="col mt-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control">
+                <p class="text-muted mt-3">Street Address</p>
+                <input type="text" class="form-control">
+                <p class="text-muted mt-3">Street Address line 2</p>
+                <hr>
+            </div>
+        </div>
+
+        <div class="container-fluid justify-content-center bg-light row m-3">
+            <div class="col-sm-6 mt-3">
+                <label for="city" class="text-muted form-label">City</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-6 mt-3">
+                <label for="state" class="text-muted form-label">State / Province</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-6 mt-3">
+                <label for="zip" class="text-muted form-label">Postal / Zip code</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-6 mt-3">
+                <label for="country" class="text-muted form-label">Country</label>
+                <select class="form-select">
+                    <option value="India">India</option>
+                    <option value="England">England</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Australia">Australia</option>
+                </select>
+            </div>
+            <div class="col-sm-6 mt-3">
+                <label for="gender" class="form-label">Gender</label>
+                <input type="text" class="form-control">
+            </div>
+            
+            <div class="col-sm-6 mt-3 mb-3">
+                <label for="dob" class="form-label">Birth Date</label>
+                <input type="date" class="form-control">
+            </div>
+            <hr>
+
+            <div class="container-fluid justify-content-center bg-light row m-3">
+                <div class="col-sm-6 mt-3">
+                    <label for="dob" class="form-label">Start Date</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-sm-6 mt-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col mt-3 mb-3">
+                    <label for="dob" class="form-label">Additional Information</label>
+                    <textarea class="form-control" placeholder="Type here..."></textarea>
+                </div>
+                <hr>
+                <button class="btn btn-success mt-3">Submit</button>
+            </div>
+
+        </div>
+
+    </form>
+</body>
+</html>
