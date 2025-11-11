@@ -5,82 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Validation</title>
   <style>
-    body { 
-        font-family: Arial, sans-serif; 
-        background: #f8f9fa; 
-        padding: 30px; 
+    body {
+      background-color: #f4f5f7;
+      padding: 40px;
     }
-    form { 
-        background: white; 
-        padding: 20px; 
-        border-radius: 10px; 
-        width: 300px; 
-        margin: auto; 
-        box-shadow: 0 0 5px gray; 
+
+    form {
+      background: #fff;
+      border-radius: 8px;
+      width: 320px;
+      margin: 0 auto;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      padding: 25px;
     }
-    input { 
-        width: 100%; 
-        padding: 8px; 
-        margin: 8px 0; 
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
     }
-    .error { 
-        color: red; 
-        font-size: 0.9em; 
+
+    .error {
+      color: #cc0000;
+      font-size: 0.85em;
+      margin-top: -5px;
     }
-    .success { 
-        color: green; 
-        font-weight: bold; 
-        text-align: center; 
+
+    .success {
+      text-align: center;
+      font-weight: bold;
+      color: green;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+  <form id="registerForm">
+    <h3 style="text-align:center;">Register</h3>
+    <input type="text" id="username" placeholder="Your full name">
+    <p class="error" id="nameErr"></p>
 
-  <form id="myForm">
-    <h3>Register</h3>
-    <input type="text" id="name" placeholder="Enter name">
-    <p class="error" id="nameError"></p>
+    <input type="email" id="userEmail" placeholder="Email address">
+    <p class="error" id="emailErr"></p>
 
-    <input type="email" id="email" placeholder="Enter email">
-    <p class="error" id="emailError"></p>
-
-    <input type="password" id="password" placeholder="Enter password">
-    <p class="error" id="passwordError"></p>
+    <input type="password" id="userPass" placeholder="Create password">
+    <p class="error" id="passErr"></p>
 
     <button type="submit">Submit</button>
-    <p class="success" id="successMsg"></p>
+    <p id="okMsg" class="success"></p>
   </form>
 
   <script>
-    document.getElementById("myForm").addEventListener("submit", function(event) {
-      event.preventDefault();
+    const formEl = document.getElementById('registerForm');
+    formEl.addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('nameErr').textContent = '';
+      document.getElementById('emailErr').textContent = '';
+      document.getElementById('passErr').textContent = '';
+      document.getElementById('okMsg').textContent = '';
 
-      document.getElementById("nameError").textContent = "";
-      document.getElementById("emailError").textContent = "";
-      document.getElementById("passwordError").textContent = "";
-      document.getElementById("successMsg").textContent = "";
+      let userName = document.getElementById('username').value.trim();
+      let userEmail = document.getElementById('userEmail').value.trim();
+      let userPass = document.getElementById('userPass').value.trim();
+      let isGood = true;
 
-      let name = document.getElementById("name").value.trim();
-      let email = document.getElementById("email").value.trim();
-      let password = document.getElementById("password").value.trim();
-      let valid = true;
-
-      if (name === "") {
-        document.getElementById("nameError").textContent = "Name is required.";
-        valid = false;
+      if (!userName) {
+        document.getElementById('nameErr').textContent = "Please enter your name.";
+        isGood = false;
+      }
+      const mailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,}$/i;
+      if (!mailRegex.test(userEmail)) {
+        document.getElementById('emailErr').textContent = "Please enter a valid email.";
+        isGood = false;
       }
 
-      if (password.length < 6) {
-        document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
-        valid = false;
+      if (userPass.length < 6) {
+        document.getElementById('passErr').textContent = "Password should be at least 6 characters.";
+        isGood = false;
       }
 
-      if (valid) {
-        document.getElementById("successMsg").textContent = "Form submitted successfully!";
-        document.getElementById("myForm").reset();
+      if (isGood) {
+        document.getElementById('okMsg').textContent = "✅ Form submitted successfully!";
+        setTimeout(() => {
+          formEl.reset();
+        }, 1000);
       }
     });
   </script>
-
 </body>
 </html>
