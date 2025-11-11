@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        h1{
+            text-align: center;
+            color: yellow;
+        }
+        body{
+            color: yellow;
+            background-color: lightslategray;
+        }
+        .task_box{
+            padding: 10px;
+            margin: 10px;
+            border-radius: 4px;
+            border: 2px solid snow;
+            text-align: center;
+        }
+        button{
+            padding: 4px;
+            border-radius: 2px;
+            margin: 4px;
+            background-color: blue;
+            color: white;
+        }
+        #tasklist{
+            color: yellow;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li span{
+            cursor: pointer;
+        }
+        .done{
+            text-decoration: line-through;
+            color: black; 
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <div class="task_box">
+        <h3>List of things to do</h3>
+        <input type="text" id="tasktext" placeholder="Enter your task..."><br><br>
+        <button onclick="addTask()">Add</button>
+        <ul id="tasklist"></ul>
+    </div>
+
+    <script>
+        const taskinput = document.querySelector("#tasktext");
+        const tasklist = document.querySelector('#tasklist');
+        
+        function addTask(){
+            const task = taskinput.value.trim();
+            if(task == "") return;
+            const listItem = document.createElement('li');
+            listItem.innerHTML = task + ' <span onclick = "removeTask(this)">❌</span>';
+            tasklist.appendChild(listItem);
+            taskinput.value = '';
+            listItem.addEventListener('click', () => listItem.classList.toggle('done'));
+            saveTasks();
+        }
+
+        function removeTask(element){
+            element.parentElement.remove();
+            saveTasks();
+        }
+
+        function saveTasks() {
+            localStorage.setItem("tasks", tasklist.innerHTML);
+        }
+
+        window.onload = function() {
+            tasklist.innerHTML = localStorage.getItem("tasks") || "";
+        };
+
+
+    </script>
+
+</body>
+</html>
