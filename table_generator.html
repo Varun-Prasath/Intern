@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Generator</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        table, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 50px;
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Table Generator</h1>
+    <label for="rows">Enter the number of rows:</label>
+    <input type="number" id="row"> <br><br>
+    <label for="columns">Enter the number of columns:</label>
+    <input type="number" id="col"><br><br>
+    <button onclick="generate()">Generate Table</button><br><br>
+    
+    <table class="table"></table>
+
+    <script>
+        function generate(){
+            const table_parent = document.querySelector(".table");
+            const rows = document.querySelector("#row");
+            const cols = document.querySelector('#col');
+            const no_rows = rows.value;
+            const no_cols = cols.value;
+            table_parent.innerHTML = "";
+            for(let i = 0; i<no_rows; i++){
+                const trow = document.createElement('tr');
+                table_parent.appendChild(trow);
+                for(let j = 0; j<no_cols; j++){
+                    const tcol =  document.createElement('td');
+                    trow.appendChild(tcol);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
