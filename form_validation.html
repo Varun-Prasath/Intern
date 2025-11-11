@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    body { 
+        font-family: Arial, sans-serif; 
+        background: #f8f9fa; 
+        padding: 30px; 
+    }
+    form { 
+        background: white; 
+        padding: 20px; 
+        border-radius: 10px; 
+        width: 300px; 
+        margin: auto; 
+        box-shadow: 0 0 5px gray; 
+    }
+    input { 
+        width: 100%; 
+        padding: 8px; 
+        margin: 8px 0; 
+    }
+    .error { 
+        color: red; 
+        font-size: 0.9em; 
+    }
+    .success { 
+        color: green; 
+        font-weight: bold; 
+        text-align: center; 
+    }
+  </style>
+</head>
+<body>
+
+  <form id="myForm">
+    <h3>Register</h3>
+    <input type="text" id="name" placeholder="Enter name">
+    <p class="error" id="nameError"></p>
+
+    <input type="email" id="email" placeholder="Enter email">
+    <p class="error" id="emailError"></p>
+
+    <input type="password" id="password" placeholder="Enter password">
+    <p class="error" id="passwordError"></p>
+
+    <button type="submit">Submit</button>
+    <p class="success" id="successMsg"></p>
+  </form>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      document.getElementById("nameError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+      document.getElementById("successMsg").textContent = "";
+
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let valid = true;
+
+      if (name === "") {
+        document.getElementById("nameError").textContent = "Name is required.";
+        valid = false;
+      }
+
+      if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+        valid = false;
+      }
+
+      if (valid) {
+        document.getElementById("successMsg").textContent = "Form submitted successfully!";
+        document.getElementById("myForm").reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
