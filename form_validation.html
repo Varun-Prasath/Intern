@@ -22,7 +22,7 @@
     input {
       width: 100%;
       padding: 10px;
-      margin: 10px 0;
+      margin: 5px;
       box-sizing: border-box;
     }
 
@@ -47,19 +47,71 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    select,textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: inherit;
+    }
   </style>
 </head>
 <body>
   <form id="registerForm">
     <h3 style="text-align:center;">Register</h3>
-    <input type="text" id="username" placeholder="Your full name">
+    <input type="text" id="fullname" placeholder="Your full name">
     <p class="error" id="nameErr"></p>
 
     <input type="email" id="userEmail" placeholder="Email address">
     <p class="error" id="emailErr"></p>
 
+    <input type="text" id="userName" placeholder="Your Username">
+    <p class="error" id="userErr"></p>
+
     <input type="password" id="userPass" placeholder="Create password">
     <p class="error" id="passErr"></p>
+
+    <input type="tel" id="phoneNum" placeholder="Your Mobile number">
+    <p class="error" id="numErr"></p>
+
+    <label>
+      <input type="radio" name="gender" value="male">Male
+    </label>
+    <label>
+      <input type="radio" name="gender" value="female">Female
+    </label>
+    <label>
+      <input type="radio" name="gender" value="others">Others
+    </label> <br><br>
+
+    <label for="city">City </label>
+    <select name="city">
+      <optgroup>
+        <option value="Chennai">Chennai</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Hyderabad">Hyderabad</option>
+      </optgroup>
+    </select> <br><br>
+
+    <label for="dob">Birth Date</label>
+    <input type="date" placeholder="Birth Date"> <br><br>
+
+    <textarea name="address" id="address" placeholder="Enter you address here..."></textarea><br><br>
+
+    <label>
+      <input type="checkbox" id="terms">
+      I agree to the <a href="#" target="_blank">Terms and Conditions</a>
+    </label>
+    <p class="error" id="termErr"></p>
 
     <button type="submit">Submit</button>
     <p id="okMsg" class="success"></p>
@@ -72,14 +124,20 @@
       document.getElementById('nameErr').textContent = '';
       document.getElementById('emailErr').textContent = '';
       document.getElementById('passErr').textContent = '';
+      document.getElementById('userErr').textContent = '';
+      document.getElementById('numErr').textContent = '';
+      document.getElementById('termErr').textContent = '';
       document.getElementById('okMsg').textContent = '';
 
-      let userName = document.getElementById('username').value.trim();
+      let fullName = document.getElementById('fullname').value.trim();
       let userEmail = document.getElementById('userEmail').value.trim();
       let userPass = document.getElementById('userPass').value.trim();
+      let userName = document.getElementById("userName").value.trim();
+      let mobileNum = document.getElementById("phoneNum").value.trim();
+      let terms = document.getElementById('terms').value.trim();
       let isGood = true;
 
-      if (!userName) {
+      if (!fullName) {
         document.getElementById('nameErr').textContent = "Please enter your name.";
         isGood = false;
       }
@@ -89,12 +147,25 @@
         isGood = false;
       }
 
+      if(!userName){
+        document.getElementById("userErr").textContent = "Please enter your user name."
+        isGood = false;
+      }
+
       if (userPass.length < 6) {
         document.getElementById('passErr').textContent = "Password should be at least 6 characters.";
         isGood = false;
       }
 
-      if (isGood) {
+      if(!mobileNum || mobileNum.length>10 || mobileNum.length<10){
+        document.getElementById("numErr").textContent = "Enter a valid number.";
+      }
+
+      if(!terms.checked){
+        document.getElementById("termErr").textContent = "You must agree to the Terms and Conditions before proceeding.";
+      }
+
+      if(isGood) {
         document.getElementById('okMsg').textContent = "✅ Form submitted successfully!";
         setTimeout(() => {
           formEl.reset();
