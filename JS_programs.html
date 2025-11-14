@@ -42,6 +42,13 @@
         <p id="factorialofnum"></p> <hr>
     </div>
 
+    <div class="timer">
+        <label>Set Timer: </label>
+        <input type="number" id="time">
+        <p id="countdown"></p>
+        <button onclick="startTimer()">Start Timer</button>
+    </div>
+
     <script>
         function check_eveorodd(){
             const num = document.getElementById("eveorodd").value.trim();
@@ -85,6 +92,25 @@
             }
             document.getElementById("factorialofnum").textContent = `Factorial of ${factnum} is ${facto}`;
         }
+
+        let totaltime;
+        let timer;
+        function startTimer() {
+            totaltime = Number(document.getElementById("time").value) * 60;
+            timer = setInterval(countdown, 1000);
+        }
+        function countdown() {
+            if (totaltime <= 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "Time's up!";
+                return;
+            }
+            let min = Math.floor(totaltime / 60);
+            let sec = totaltime % 60;
+            document.getElementById("countdown").innerHTML = `${min} : ${sec}`;
+            totaltime--;
+        }
+
     </script>
 </body>
 </html>
