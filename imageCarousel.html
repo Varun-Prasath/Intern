@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <style>
+        body{
+            background-color: azure;
+        }
+        h1{
+            text-align: center;
+        }
+        img{
+            width: 20%;
+            height: 20%;
+            height: auto;
+        }
+        .imgs{
+            display: flex;
+            justify-content: center;
+            background-color: antiquewhite;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            width: 1000px;
+        }
+        .carousel{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        span{
+            cursor: pointer;
+        }
+        #indicator{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Image Carousel</h1>
+    <div class="carousel">
+        <span id="prev">&#10094;</span>
+        <div class="imgs">
+            <img src="images/cat1.jpeg" alt="Cat1"> 
+            <img src="images/cat2.jpeg" alt="Cat2">
+            <img src="images/cat3.jpeg" alt="Cat3">
+            <img src="images/cat4.jpeg" alt="Cat4">
+        </div>
+        <span id="next">&#10095;</span>
+    </div>
+    <p id="indicator">Image 1 of 4</p>
+    <script>
+        let images = document.querySelectorAll('img');
+        let current  = 0;
+        for(let i=1; i<images.length; i++){
+            images[i].style.display = 'none';
+        }
+
+        let indicatorEl = document.getElementById('indicator');
+
+        document.getElementById('next').addEventListener('click',next);
+        document.getElementById('prev').addEventListener('click',prev);
+    
+        function next(){
+            images[current].style.display = 'none';
+            current++;
+            if(current >= images.length){
+                current = 0;
+            }
+            images[current].style.display = 'block';
+            indicatorEl.textContent = `Image ${current + 1} of 4`;
+        }
+        function prev(){
+            images[current].style.display = 'none';
+            current--;
+            if(current < 0){
+                current = images.length-1;
+            }
+            images[current].style.display = 'block';
+            indicatorEl.textContent = `Image ${current + 1} of 4`;
+        }
+
+        setInterval(next, 3000);
+    </script>
+</body>
+</html>
